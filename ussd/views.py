@@ -27,22 +27,22 @@ def ussdApp(request):
         response =""
         #  main menu for our application
         if text == '':
-            response =  "Murakaza neza ku Kigegapp \n"
+            response =  "CON Murakaza neza ku Kigegapp \n"
             response += "1. Kubitsa  igihingwa \n"
             response += "2. kureba igihe bizacururizwa \n"
         elif text == '1':
 
-            response = "Hitamo igihingwa ushaka kubitsa \n"
+            response = "CON Hitamo igihingwa ushaka kubitsa \n"
             response += "1. imbuto \n"
             response += "2. Imboga\n"
             response+= "3. Ibinyameke\n"
         elif text == '1*1':
-            product="imbuto"
-            response = " shyiramo ingano zazo' "+str(product)+"\n"
+            product="CON imbuto"
+            response = " CON shyiramo ingano zazo' "+str(product)+"\n"
         elif category =='1*1' and int(len(level)) == 3 and str(level[2]) in  str(level):
-            response = "shyiramo igihe zizamara \n"
+            response = " CON shyiramo igihe zizamara \n"
         elif category =='1*1' and int(len(level)) == 4 and str(level[3]) in  str(level):
-            response = "shyiramo code \n"
+            response = "CON shyiramo code \n"
         elif category =='1*1' and int(len(level)) == 5 and str(level[4]) in  str(level):
             # save the data into the database
             category='Ibinyomoro'
@@ -63,7 +63,7 @@ def ussdApp(request):
         
         #  ======================== INGENGABIHE==================
         elif text == '2':
-            response = " Hitamo igihe bizacururizwa \n "
+            response = "CON Hitamo igihe bizacururizwa \n "
             response += "1.  ukwezi \n"
             response += "2. umwaka \n"
     
@@ -74,14 +74,14 @@ def ussdApp(request):
                 sessionID=session_id,
                 phoneNumber=phone_number
             )
-            response =" Murakoze , tuzajya tunbamenyesha aho igihe kigeze"
+            response ="END Murakoze , tuzajya tunbamenyesha aho igihe kigeze"
         elif text == '2*2':
             insertData(
                 category='Kabiri',
                 sessionID=session_id,
                 phoneNumber=phone_number
             )
-            response =" Murakoze , tuzajya tubamenyesha igihe gisigaye"
+            response =" END Murakoze , tuzajya tubamenyesha igihe gisigaye"
         elif text == '2*3':
             insertData(
                 category='Burigihe',
@@ -91,7 +91,7 @@ def ussdApp(request):
             response ="END Murakoze , tuzajya tubagezaho amakuru ku iteganyagihe Buri munsi"
 
         else:
-            response = "mwongere mukanya"
+            response = " CON mwongere mukanya"
         return HttpResponse(response)
     else:
         return HttpResponse('we are on ussd app')
